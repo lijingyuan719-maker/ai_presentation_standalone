@@ -200,11 +200,11 @@ window.addEventListener('scroll', () => {
    const scrolled = window.scrollY;
 
    if (scrolled > 50) {
-      navbar.style.background = '#FFFFFF'; /* Changed to solid white */
-      navbar.style.borderBottomColor = 'rgba(71, 85, 105, 0.2)';
+      navbar.style.background = 'rgba(15, 23, 42, 0.9)'; /* Slightly more opaque on scroll */
+      navbar.style.borderBottomColor = 'rgba(255, 255, 255, 0.1)';
    } else {
-      navbar.style.background = '#FFFFFF'; /* Changed to solid white */
-      navbar.style.borderBottomColor = 'rgba(71, 85, 105, 0.1)';
+      navbar.style.background = 'rgba(15, 23, 42, 0.8)';
+      navbar.style.borderBottomColor = 'rgba(255, 255, 255, 0.05)';
    }
 });
 
