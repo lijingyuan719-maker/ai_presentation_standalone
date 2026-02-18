@@ -280,3 +280,83 @@ document.querySelectorAll('.testimonial-content').forEach(testimonial => {
       testimonial.style.boxShadow = '0 15px 35px rgba(71, 85, 105, 0.1)';
    });
 });
+// --- Simple Modal Popup for Team Cards ---
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.member-card');
+    
+    // Create or select overlay
+    let overlay = document.querySelector('.card-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'card-overlay';
+        document.body.appendChild(overlay);
+    }
+    
+    let activeModal = null;
+
+    cards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Check if clicking on an already open modal or a close button
+            if (e.target.closest('.team-modal') || e.target.closest('.close-modal')) return;
+
+            // Clone content strategy
+            const originalAvatarSrc = card.querySelector('.member-avatar img').src;
+            const originalName = card.querySelector('.member-info h3').textContent;
+            const detailsContent = card.querySelector('.member-details').innerHTML;
+
+            // Create Modal Structure
+            const modal = document.createElement('div');
+            modal.className = 'team-modal fade-in-up';
+            modal.innerHTML = `
+                <div class="modal-header">
+                    <div class="modal-avatar">
+                        <img src="${originalAvatarSrc}" alt="${originalName}">
+                    </div>
+                    <h3>${originalName}</h3>
+                </div>
+                <div class="modal-body">
+                    ${detailsContent}
+                </div>
+                <button class="close-modal-btn">×</button>
+            `;
+
+            document.body.appendChild(modal);
+            activeModal = modal;
+            
+            // Show Overlay
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Add Close Logic
+            const closeBtn = modal.querySelector('.close-modal-btn');
+            const innerCloseBtn = modal.querySelector('.close-card'); // The button inside content
+            
+            // Logic for internal "Close Details" button if it exists in HTML
+            if(innerCloseBtn) {
+                 innerCloseBtn.onclick = closeModal;
+            }
+            
+            closeBtn.onclick = closeModal;
+            overlay.onclick = closeModal;
+        });
+    });
+
+    function closeModal() {
+        if (activeModal) {
+            activeModal.classList.remove('fade-in-up');
+            activeModal.classList.add('fade-out-down');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            setTimeout(() => {
+                if (activeModal) activeModal.remove();
+                activeModal = null;
+            }, 300);
+        }
+    }
+
+    // Escape Key Support
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+});
