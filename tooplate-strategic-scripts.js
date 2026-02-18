@@ -73,11 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // Define the 3 sets of text you want to rotate
       const textSets = [{
          h1: "你好，我是你的<br>AI 助手",
-         p: "不要惊讶，你现在看到的页面完全由 AI 生成。无需魔法，利用国产免费工具，带你掌握从文案到开发的全流程。"
+         p: "不要惊讶，你现在看到的页面完全由 AI 辅助生成。利用 Microsoft Copilot 与 Trae，我将带你从零开始，掌握脚本撰写、演示设计、工具及程序开发的全流程。"
       },
       {
          h1: "释放你的<br>无限潜能",
-         p: "我们将学习通义千问的逻辑思考、即梦的视觉创造，以及 Trae 的代码能力。让繁琐的工作自动化，把时间留给真正的思考与创新。"
+         p: "我们将学习 Microsoft Copilot 的逻辑思考与 Trae 的全栈代码能力。让繁琐的工作自动化，把时间留给真正的思考与创新。"
       },
       {
          h1: "即刻开启<br>AI 之旅",
