@@ -1,0 +1,136 @@
+/* 
+Team Section
+- Team Member Cards
+- Hexagonal Layout (Conceptual)
+*/
+
+.team {
+    background: #0f172a;
+    /* Dark background */
+    position: relative;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+/* -------------------------------------------------------------------------
+   Team Member Card
+------------------------------------------------------------------------- */
+.team-member {
+    width: 300px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+}
+
+.team-member.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.member-card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.8));
+    /* Dark translucent card */
+    border-radius: 25px;
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(139, 69, 19, 0.1);
+    /* Original color */
+    transition: all 0.5s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-10px) rotate(-2deg);
+    border-color: rgba(71, 85, 105, 0.3);
+    box-shadow: 0 20px 40px rgba(71, 85, 105, 0.2);
+}
+
+.member-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(100, 116, 139, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.member-card:hover::before {
+    left: 100%;
+}
+
+.member-avatar {
+    width: 144px;
+    height: 144px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2.5rem;
+    color: white;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    padding: 32px;
+    box-sizing: border-box;
+}
+
+.member-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0;
+}
+
+.member-info h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #f1f5f9;
+    position: relative;
+    z-index: 2;
+}
+
+.member-role {
+    color: #475569;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.member-info p {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+/* -------------------------------------------------------------------------
+   Responsive
+------------------------------------------------------------------------- */
+@media (max-width: 940px) {
+    .team-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .member-card {
+        padding: 2rem;
+    }
+}

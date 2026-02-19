@@ -1,0 +1,109 @@
+/* 
+Contact Section
+- Contact Form
+- Layout
+*/
+
+/* -------------------------------------------------------------------------
+   Section Background
+------------------------------------------------------------------------- */
+.contact {
+    background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 80px 80px;
+    background-position: 0 0, 0 0;
+    animation: contactGridMove 30s linear infinite;
+    /* Keyframe in animations.css */
+}
+
+.contact .section-title {
+    color: white;
+}
+
+.contact-content {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.contact p {
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
+    opacity: 0.95;
+    text-align: center;
+}
+
+/* -------------------------------------------------------------------------
+   Form
+------------------------------------------------------------------------- */
+.contact-form {
+    display: grid;
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 1.5rem;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #64748b;
+    box-shadow: 0 0 0 4px rgba(100, 116, 139, 0.2);
+    transform: scale(1.02);
+}
+
+.contact-form textarea {
+    grid-column: 1 / -1;
+    resize: vertical;
+    min-height: 150px;
+    font-family: inherit;
+}
+
+/* -------------------------------------------------------------------------
+   Responsive
+------------------------------------------------------------------------- */
+@media (max-width: 940px) {
+    .form-group {
+        grid-template-columns: 1fr;
+    }
+}

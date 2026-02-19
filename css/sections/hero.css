@@ -1,0 +1,157 @@
+/* 
+Hero Section
+- Main Banner
+- Background Animations (Grid, Shapes)
+- Typography
+*/
+
+/* -------------------------------------------------------------------------
+   Hero Container
+------------------------------------------------------------------------- */
+.hero {
+    height: 100vh;
+    min-height: 600px;
+    width: 100%;
+    padding: 0 2rem;
+    /* From initial definition */
+    background: linear-gradient(135deg, #1e293b 0%, #475569 50%, #64748b 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    /* Ensure shapes don't spill out */
+}
+
+/* Background Grid Animation */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    background-position: 0 0, 0 0;
+    animation: gridMove 20s linear infinite;
+}
+
+/* -------------------------------------------------------------------------
+   Hero Content
+------------------------------------------------------------------------- */
+.hero-content {
+    max-width: 1050px;
+    /* Merging with 800px from later? Later says 800px at line 1360 */
+    /* Re-evaluating optimal width. Original CSS had 1050px at line 205, then 800px at 1360. 
+	   Cascading order means 800px wins. */
+    max-width: 800px;
+    padding: 0 2rem;
+    /* Keep padding */
+    margin-top: 8rem;
+    /* From line 207? */
+    /* Line 1357 redefines .hero-content: position relative, z-index 2, max-width 800, padding 0 2rem.
+	   Prop 207 margin-top: 8rem might still apply if not overridden.
+	   Prop 208 transform translateY(50px) + animation fadeInUp. 
+	   I will combine them. */
+    margin-top: 8rem;
+    transform: translateY(50px);
+    opacity: 0;
+    animation: fadeInUp 1.2s ease forwards;
+    z-index: 2;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 800;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+.hero p {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    margin-bottom: 3rem;
+    opacity: 0.95;
+    font-weight: 300;
+}
+
+.hero-content h1,
+.hero-content p {
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* -------------------------------------------------------------------------
+   Geometric Shapes
+------------------------------------------------------------------------- */
+.geometric-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.geo-shape {
+    position: absolute;
+    opacity: 0.15;
+}
+
+.geo-shape:nth-child(1) {
+    top: 20%;
+    left: 15%;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(45deg, #fff, transparent);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    animation: float 12s ease-in-out infinite;
+}
+
+.geo-shape:nth-child(2) {
+    top: 15%;
+    right: 20%;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #fff, transparent);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: float 10s ease-in-out infinite reverse;
+}
+
+.geo-shape:nth-child(3) {
+    top: 60%;
+    left: 10%;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(90deg, #fff, transparent);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    animation: float 8s ease-in-out infinite;
+}
+
+.geo-shape:nth-child(4) {
+    top: 70%;
+    right: 15%;
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(180deg, #fff, transparent);
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+    animation: float 14s ease-in-out infinite;
+}
+
+.geo-shape:nth-child(5) {
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 110px;
+    background: linear-gradient(270deg, #fff, transparent);
+    clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
+    animation: float 9s ease-in-out infinite;
+}
